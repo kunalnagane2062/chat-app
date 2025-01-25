@@ -23,11 +23,15 @@ export const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-    const boyProfilePic = `https://avatar-placeholder.iran.liara.run/public/boy?username=${username}`
-    const girlProfilePic = `https://avatar-placeholder.iran.liara.run/public/girl?username=${username}`
+    // const boyProfilePic = `https://avatar-placeholder.iran.liara.run/public/boy?username=${username}`
+    // const girlProfilePic = `https://avatar-placeholder.iran.liara.run/public/girl?username=${username}`
 
     // const boyProfilePic = `https://api.dicebear.com/6.x/male/svg?seed=${username}`;
     // const girlProfilePic = `https://api.dicebear.com/6.x/female/svg?seed=${username}`;
+
+    const boyProfilePic = `https://api.multiavatar.com/Binx ${username}.png`;
+    const girlProfilePic = `https://api.multiavatar.com/Binx ${username}.png`;
+
 
     const newUser = new User(
         {
