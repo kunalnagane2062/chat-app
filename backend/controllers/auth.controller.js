@@ -26,6 +26,9 @@ export const signup = async (req, res) => {
     const boyProfilePic = `https://avatar-placeholder.iran.liara.run/public/boy?username=${username}`
     const girlProfilePic = `https://avatar-placeholder.iran.liara.run/public/girl?username=${username}`
 
+    // const boyProfilePic = `https://api.dicebear.com/6.x/male/svg?seed=${username}`;
+    // const girlProfilePic = `https://api.dicebear.com/6.x/female/svg?seed=${username}`;
+
     const newUser = new User(
         {
             fullName,
@@ -36,7 +39,10 @@ export const signup = async (req, res) => {
         }
     )
 
-    generateTokenAndSetCookie(newUser._id,res);
+    console.log("Before generating token");
+    generateTokenAndSetCookie(newUser._id, res);
+    console.log("After generating token");
+
 
     await newUser.save();
 
@@ -44,7 +50,7 @@ export const signup = async (req, res) => {
         _id: newUser._id,
         fullName: newUser.fullName,
         username: newUser.username,
-        profilePic: newUser.profilePic
+        profilePic: newUser.profilePic,
     })
 
    } catch (error) {
